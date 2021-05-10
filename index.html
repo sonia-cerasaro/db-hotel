@@ -7,10 +7,42 @@
   <body>
 
     <div id="root">
+      <table>
+        <thead>
+          <tr>
+            <th>id</th>
+            <th>room number</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr v-for="room in rooms">
+            <td> {{ room.id }}</td>
+            <td @click="getById(room.id)">
+              {{ room.room }}
+            </td>
+          </tr>
+        </tbody>
+      </table>
 
+      <div v-if="room">
+        <div class="">
+          <b> id </b>
+          {{ room.id }}
+        </div>
+        <div class="">
+          <b> room number </b>
+          {{ room.room_number }}
+        </div>
+        <div class="">
+          <b> floor </b>
+          {{ room.floor}}
+        </div>
+        <div class="">
+          <b> beds </b>
+          {{ room.beds }}
+        </div>
+      </div>
     </div>
-
-
 
     <script src="https://cdn.jsdelivr.net/npm/vue"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.20.0/axios.min.js"></script>

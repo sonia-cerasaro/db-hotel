@@ -6,8 +6,8 @@ In ogni variabile inserisco il valore chiave per potervi accedere
  <?php
 
   $servername = "localhost";
-  $username = "DEVI GUARDARE QUAL'e'!";
-  $password = "SAME AS ABOVE";
+  $username = "root";
+  $password = "MAMP";
   $dbname = "db_hotel";
 
   // Connetto le variabili al database

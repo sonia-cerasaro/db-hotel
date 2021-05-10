@@ -1,5 +1,5 @@
 <?php
-  include_once __DIR__.'/../db.php';  //collega il codice che sta nel file db.php
+  include_once __DIR__.'../db.php';  //collega il codice che sta nel file db.php
 
   header('Content-Type: application/json');  //dice che i dati che stanno per tornare
                                              //sono di tipo json
@@ -40,5 +40,7 @@
     "response" => $result,
     "success" => true,
   ]);
-}
+  }
+
+  $conn->close();                              //chiudo la connessione con db
  ?>
