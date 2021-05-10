@@ -1,13 +1,13 @@
-<!-- uso il file db.php per creare
-la connessione con il database.
-Questo file interagisce con stanze.php attraverso include_once
-In ogni variabile inserisco il valore chiave per potervi accedere
- -->
- <?php
+
+ <?php  /* uso il file db.php per creare
+ la connessione con il database.
+ Questo file interagisce con stanze.php attraverso include_once
+ In ogni variabile inserisco il valore chiave per potervi accedere*/
+
 
   $servername = "localhost";
   $username = "root";
-  $password = "MAMP";
+  $password = "root";
   $dbname = "db_hotel";
 
   // Connetto le variabili al database

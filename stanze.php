@@ -1,8 +1,12 @@
 <?php
-  include_once __DIR__.'../db.php';  //collega il codice che sta nel file db.php
+  ini_set('display_errors', 1);
+  ini_set('display_startup_errors', 1);
+  error_reporting(E_ALL);
+
+  include_once __DIR__.'/db.php';  //collega il codice che sta nel file db.php
 
   header('Content-Type: application/json');  //dice che i dati che stanno per tornare
-                                             //sono di tipo json
+                                          //sono di tipo json
 
   if (!empty($_GET) && $_GET['id']) {        //se ci arriva solo un query parameter ($_GET)
                                             //e facciamo la selezione di una precisa riga in questo caso id
@@ -17,12 +21,9 @@
       while($row = $rows->fetch_assoc()) {                           // cicla i risultati e li trasforma in array associativi
         $result[] = $row;                                            //push dell'array associativo in un array di risultati
     }
-  }
 
-  echo json_encode([                      //questo pezzo di codice e' collegato all'If di sopra
-    "response" => $result,                //serve per mostrare il risultato codificato in json
-    "success" => true,                    //senza di questo axios di Vue non capirebbe
-  ]);
+
+   echo json_encode($result);
 
 } else {                                  //se invece ci arrivano query parameter diversi da ID
   $sql = "SELECT * FROM stanze";          //creiamo un sequel che eseguira' un azione
@@ -30,17 +31,16 @@
 
   $result = [];
 
-  if ($rows && &rows->num_rows > 0) {          //se la query ha funzionato e quindi ci sono piu' di 0 row
+  if ($rows && $rows->num_rows > 0) {          //se la query ha funzionato e quindi ci sono piu' di 0 row
     while($row = $rows->fetch_assoc()) {       //cicliamo queste row e per ogni riga la trasformiamo in array associativo
       $result[] = $row;                        //e la pushamo in un array di risultati (come sopra)
     }
   }
 
-  echo json_encode([
-    "response" => $result,
-    "success" => true,
-  ]);
+  echo json_encode(
+    $result
+  );
   }
 
-  $conn->close();                              //chiudo la connessione con db
+  $conn->close();                              //chiudo la connessione con db/ come debuggare in php var_dump(cio' che voglio testare) e funzione die() che blocca il restante codice
  ?>
